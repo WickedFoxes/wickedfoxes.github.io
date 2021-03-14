@@ -1,0 +1,75 @@
+function main_VH_hide() {
+    document.getElementById("container-MP-calculator").style.display="none";
+    document.getElementById("container-pure-MP-calculator").style.display="none";
+    var con = document.getElementById("container-main-VH");
+    if(con.style.display=="none") con.style.display="block";
+    else con.style.display="none";
+}
+function MP_calculator_hide() {
+    document.getElementById("container-main-VH").style.display="none";
+    document.getElementById("container-pure-MP-calculator").style.display="none";
+    var con = document.getElementById("container-MP-calculator");
+    if(con.style.display=="none") con.style.display="block";
+    else con.style.display="none";
+}
+function pure_MP_calculator_hide() {
+    document.getElementById("container-main-VH").style.display="none";
+    document.getElementById("container-MP-calculator").style.display="none";
+    var con = document.getElementById("container-pure-MP-calculator");
+    if(con.style.display=="none") con.style.display="block";
+    else con.style.display="none";
+}
+
+function getVHCharacterView() {
+    var getID = document.getElementById("character-main-VH-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+    
+    document.getElementById("main-VH-info-18-1").style.display="none";
+    document.getElementById("main-VH-info-18-2").style.display="none";
+    document.getElementById("main-VH-info-18-3").style.display="none";
+    document.getElementById("main-VH-info-19-1").style.display="none";
+    document.getElementById("main-VH-info-19-2").style.display="none";
+    document.getElementById("main-VH-info-19-3").style.display="none";
+    document.getElementById("main-VH-info-20-1").style.display="none";
+    
+    if(stage=="default_character"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/Placeholder.webp" 
+        document.getElementById("preset-character-name-label").innerText="";
+    }
+    if(stage=="VH18-1"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/페코린느3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="페코린느";
+        document.getElementById("main-VH-info-18-1").style.display="block";
+    }
+    if(stage=="VH18-2"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/콧코로3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="콧코로";
+        document.getElementById("main-VH-info-18-2").style.display="block";
+    }
+    if(stage=="VH18-3"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/캬루3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="캬루";
+        document.getElementById("main-VH-info-18-3").style.display="block";
+    }
+    if(stage=="VH19-1"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/리노3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="리노";
+        document.getElementById("main-VH-info-19-1").style.display="block";
+    }
+    if(stage=="VH19-2"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/리마3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="리마";
+        document.getElementById("main-VH-info-19-2").style.display="block";
+    }
+    if(stage=="VH19-3"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/이오3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="이오";
+        document.getElementById("main-VH-info-19-3").style.display="block";
+    }
+    if(stage=="VH20-1"){
+        document.getElementById("preset-character-image").src="priconne-images/unit-icon/유카리3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="유카리";
+        document.getElementById("main-VH-info-20-1").style.display="block";
+    }
+    location.href="#main-VH-tittle";
+}
