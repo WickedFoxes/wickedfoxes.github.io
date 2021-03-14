@@ -128,3 +128,28 @@ function getVHCharacterView() {
     }
     location.href="#main-VH-tittle";
 }
+
+function calculateHDpiece(){
+    document.getElementById("MP-calculate-result").style.display="block";
+
+    var getID = document.getElementById("character-main-HD-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="VH18-1"){
+        alert("1"*"1");
+        var num = $("input:checkbox[name=peko-checkbox]:checked").length;
+        var times = $(":input:radio[name=times]:checked").value;
+        var days = $(":input:number[name=days]").value;
+        document.getElementById("MP-days").value = days;
+        if($("input:checkbox[name=peko-reset]").is(":checked") == true){
+            alert("1"+"1");
+            document.getElementById("MP-piecenum").innerText = num * times * days;
+            document.getElementById("MP-jewelnum").innerText = "50" * num * days;
+        }
+        else{
+            alert("1"+"1");
+            document.getElementById("MP-piecenum").innerText= num * times * "1" / "2";
+            document.getElementById("MP-jewelnum").innerText = "0";
+        }
+    }   
+}
