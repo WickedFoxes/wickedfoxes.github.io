@@ -20,6 +20,61 @@ function pure_MP_calculator_hide() {
     else con.style.display="none";
 }
 
+function getHDCharacterView(){
+    var getID = document.getElementById("character-main-HD-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    document.getElementById("peko_HD_checkbox").style.display="none";
+    document.getElementById("koko_HD_checkbox").style.display="none";
+    document.getElementById("karyl_HD_checkbox").style.display="none";
+    document.getElementById("rino_HD_checkbox").style.display="none";
+    document.getElementById("rima_HD_checkbox").style.display="none";
+    document.getElementById("io_HD_checkbox").style.display="none";
+    document.getElementById("yukari_HD_checkbox").style.display="none";
+
+    if(stage=="default_character"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/Placeholder.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="";
+    }
+    if(stage=="VH18-1"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/페코린느3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="페코린느";
+        document.getElementById("peko_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH18-2"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/콧코로3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="콧코로";
+        document.getElementById("koko_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH18-3"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/캬루3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="캬루";
+        document.getElementById("karyl_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH19-1"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/리노3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="리노";
+        document.getElementById("rino_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH19-2"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/리마3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="리마";
+        document.getElementById("rima_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH19-3"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/이오3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="이오";
+        document.getElementById("io_HD_checkbox").style.display="block";
+    }
+    if(stage=="VH20-1"){
+        document.getElementById("preset-HD-character-image").src="priconne-images/unit-icon/유카리3성.webp" 
+        document.getElementById("preset-HD-character-name-label").innerText="유카리";
+        document.getElementById("yukari_HD_checkbox").style.display="block";
+    }
+
+    location.href="#container-MP-calculator";
+}
+
 function getVHCharacterView() {
     var getID = document.getElementById("character-main-VH-list-select");
     var stage = getID.options[getID.selectedIndex].value;
