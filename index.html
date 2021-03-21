@@ -14,7 +14,7 @@
                 <h1>프린세스 커넥트! Re:Dive</h1>
                 <h2>6성 개화 도우미</h2>
             </div>
-            <img src="priconne-images/tittle.webp">
+            <!--<img src="priconne-images/tittle.webp">-->
             <!-- Navigation -->
             <div id="navigation-bar">
                 <button id="navigation-MP-calculator" type="button" onclick="MP_calculator_hide(); location.href='#container-MP-calculator';" >메모리 피스 계산기</button>
@@ -267,7 +267,7 @@
                 </div>
             </div>
             <!--페코린느 하드 파밍-->
-            <div id="peko_HD_checkbox" style="display: none;">
+            <form id="peko_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="checkbox" name="peko-checkbox">HD 3-1</label>
                     <label><input type="checkbox" name="peko-checkbox">HD 7-1</label>
@@ -275,17 +275,19 @@
                     <label><input type="checkbox" name="peko-checkbox">HD 25-1</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type="radio" name="times" value="l">일반</label>
-                    <label><input type="radio" name="times" value="2">2배 이벤트</label>
-                    <label><input type="radio" name="times" value="3">3배 이벤트</label>
+                    <label><input type="radio" name="peko-times" value=1>일반</label>
+                    <label><input type="radio" name="peko-times" value=2>2배 이벤트</label>
+                    <label><input type="radio" name="peko-times" value=3>3배 이벤트</label>
                 </fieldset>
                 <fieldset>
                     <label><input type='checkbox' name="peko-reset">풀초기화</label>
-                    <label><input type='number' name="days">일</label>
+                    <label><input type='number' id="peko-days">일</label>
                     <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
-            </div>
-            <div id="koko_HD_checkbox" style="display: none;">
+            </form>
+            <!--콧코로 하드 파밍-->
+            <form id="koko_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="checkbox" name="koko-checkbox">HD 3-1</label>
                     <label><input type="checkbox" name="koko-checkbox">HD 4-1</label>
@@ -294,17 +296,18 @@
                     <label><input type="checkbox" name="koko-checkbox">HD 29-1</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type="radio" name="times" value="l">일반</label>
-                    <label><input type="radio" name="times" value="2">2배 이벤트</label>
-                    <label><input type="radio" name="times" value="3">3배 이벤트</label>
+                    <label><input type="radio" name="koko-times" value=l>일반</label>
+                    <label><input type="radio" name="koko-times" value=2>2배 이벤트</label>
+                    <label><input type="radio" name="koko-times" value=3>3배 이벤트</label>
                 </fieldset>
                 <fieldset>
                     <label><input type='checkbox' name="koko-reset">풀초기화</label>
-                    <label><input type='number' name="koko-days">일</label>
-                    <button class="calculate">계산</button>
+                    <label><input type='number' id="koko-days">일</label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
-            </div>
-            <div id="karyl_HD_checkbox" style="display: none;">
+            </form>
+            <div id="karyl_HD_checkbox" style="display: none;" onsubmit="return false;"> 
                 <fieldset>
                     <label><input type="radio" name="place" value="300">운해의 산맥</label>
                     <label><input type="radio" name="place" value="1000">밀림의 거목</label>
@@ -327,7 +330,7 @@
                     <label>일<input type='number' name="rino-days"></label>
                 </fieldset>
             </div>
-            <div id="rima_HD_checkbox" style="display: none;">
+            <form id="rima_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="checkbox" name="rima-checkbox" value="HD 3-2">HD 3-1</label>
                     <label><input type="checkbox" name="rima-checkbox" value="HD 11-1">HD 7-1</label>
@@ -335,17 +338,18 @@
                     <label><input type="checkbox" name="rima-checkbox" value="HD 27-1">HD 25-1</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type="radio" name="times" value="nomal">일반</label>
-                    <label><input type="radio" name="times" value="event2">2배 이벤트</label>
-                    <label><input type="radio" name="times" value="event3">3배 이벤트</label>
+                    <label><input type="radio" name="rima-times" value=1>일반</label>
+                    <label><input type="radio" name="rima-times" value=2>2배 이벤트</label>
+                    <label><input type="radio" name="rima-times" value=3>3배 이벤트</label>
                 </fieldset>
                 <fieldset>
                     <label><input type='checkbox' name="rima-reset" value="reset">풀초기화</label>
-                    <label><input type='number' name="rima-days">일</label>
+                    <label><input type='number' id="koko-days">일</label>
                     <button class="calculate">계산</button>
+                    <input type="reset">
                 </fieldset>
-            </div>
-            <div id="io_HD_checkbox" style="display: none;">
+            </form>
+            <div id="io_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="radio" name="rank" value="5000">1위~50위</label>
                     <label><input type="radio" name="rank" value="4500">51위~150위</label>
@@ -361,7 +365,7 @@
                     <label>클랜전 참여 횟수(달)<input type='number' name="io-clearnum"></label>
                 </fieldset>
             </div>
-            <div id="yukari_HD_checkbox" style="display: none;">
+            <div id="yukari_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="radio" name="place" value="300">운해의 산맥</label>
                     <label><input type="radio" name="place" value="1000">밀림의 거목</label>
@@ -386,7 +390,7 @@
                     </tr>
                     <tr>
                         <th>피스량</th>
-                        <td id="MP-piecenum"></td>
+                        <td id="MP-num"></td>
                     </tr>
                     <tr>
                         <th>소비 쥬얼량</th>

@@ -1,3 +1,4 @@
+// 화면 숨기는 함수
 function main_VH_hide() {
     document.getElementById("container-MP-calculator").style.display="none";
     document.getElementById("container-pure-MP-calculator").style.display="none";
@@ -20,6 +21,7 @@ function pure_MP_calculator_hide() {
     else con.style.display="none";
 }
 
+//하드 피스 케릭터 사진 + 계산기 표시
 function getHDCharacterView(){
     var getID = document.getElementById("character-main-HD-list-select");
     var stage = getID.options[getID.selectedIndex].value;
@@ -75,10 +77,12 @@ function getHDCharacterView(){
     location.href="#container-MP-calculator";
 }
 
+// 베리하드 케릭터 사진 + 계산기 표시
 function getVHCharacterView() {
     var getID = document.getElementById("character-main-VH-list-select");
     var stage = getID.options[getID.selectedIndex].value;
-    
+
+    // 이전 캐릭터 창 닫기
     document.getElementById("main-VH-info-18-1").style.display="none";
     document.getElementById("main-VH-info-18-2").style.display="none";
     document.getElementById("main-VH-info-18-3").style.display="none";
@@ -86,7 +90,7 @@ function getVHCharacterView() {
     document.getElementById("main-VH-info-19-2").style.display="none";
     document.getElementById("main-VH-info-19-3").style.display="none";
     document.getElementById("main-VH-info-20-1").style.display="none";
-    
+
     if(stage=="default_character"){
         document.getElementById("preset-character-image").src="priconne-images/unit-icon/Placeholder.webp" 
         document.getElementById("preset-character-name-label").innerText="";
@@ -129,6 +133,7 @@ function getVHCharacterView() {
     location.href="#main-VH-tittle";
 }
 
+// 하드 피스 계산기 버튼
 function calculateHDpiece(){
     document.getElementById("MP-calculate-result").style.display="block";
 
@@ -136,20 +141,39 @@ function calculateHDpiece(){
     var stage = getID.options[getID.selectedIndex].value;
 
     if(stage=="VH18-1"){
-        alert("1"*"1");
-        var num = $("input:checkbox[name=peko-checkbox]:checked").length;
-        var times = $(":input:radio[name=times]:checked").value;
-        var days = $(":input:number[name=days]").value;
-        document.getElementById("MP-days").value = days;
-        if($("input:checkbox[name=peko-reset]").is(":checked") == true){
-            alert("1"+"1");
-            document.getElementById("MP-piecenum").innerText = num * times * days;
-            document.getElementById("MP-jewelnum").innerText = "50" * num * days;
-        }
-        else{
-            alert("1"+"1");
-            document.getElementById("MP-piecenum").innerText= num * times * "1" / "2";
-            document.getElementById("MP-jewelnum").innerText = "0";
-        }
-    }   
+        var checked_num = $('input:checkbox[name="peko-checkbox"]:checked').length;
+        var times = $('input:radio[name="peko-times"]:checked').val();
+        var isfull = $('input:checkbox[name="peko-reset"]').is(':checked');
+        var full = 1; if(isfull) full = 2;
+        var days = document.getElementById('peko-days').value;
+
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+        if($('input:checkbox[name="peko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
+    }
+    if(stage=="VH18-2"){
+        var checked_num = $('input:checkbox[name="koko-checkbox"]:checked').length;
+        var times = $('input:radio[name="koko-times"]:checked').val();
+        var isfull = $('input:checkbox[name="koko-reset"]').is(':checked');
+        var full = 1; if(isfull) full = 2;
+        var days = document.getElementById('koko-days').value;
+
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+        if($('input:checkbox[name="koko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
+    }
+    if(stage=="VH19-2"){
+        var checked_num = $('input:checkbox[name="rima-checkbox"]:checked').length;
+        var times = $('input:radio[name="rima-times"]:checked').val();
+        var isfull = $('input:checkbox[name="rima-reset"]').is(':checked');
+        var full = 1; if(isfull) full = 2;
+        var days = document.getElementById('rima-days').value;
+
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+        if($('input:checkbox[name="rima-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
+    }
 }
