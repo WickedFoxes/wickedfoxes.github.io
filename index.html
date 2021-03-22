@@ -307,29 +307,34 @@
                     <input type="reset">
                 </fieldset>
             </form>
-            <div id="karyl_HD_checkbox" style="display: none;" onsubmit="return false;"> 
+            <!--캬루 던전 파밍-->
+            <form id="karyl_HD_checkbox" style="display: none;" onsubmit="return false;"> 
                 <fieldset>
-                    <label><input type="radio" name="place" value="300">운해의 산맥</label>
-                    <label><input type="radio" name="place" value="1000">밀림의 거목</label>
-                    <label><input type="radio" name="place" value="1500">절벽의 유적</label>
-                    <label><input type="radio" name="place" value="2000">창해의 고탑</label>
-                    <label><input type="radio" name="place" value="2500">독기의 암룡</label>
+                    <label><input type="radio" name="karyl-place" value=0.375>운해의 산맥</label>
+                    <label><input type="radio" name="karyl-place" value=1.25>밀림의 거목</label>
+                    <label><input type="radio" name="karyl-place" value=1.875>절벽의 유적</label>
+                    <label><input type="radio" name="karyl-place" value=2.5>창해의 고탑</label>
+                    <label><input type="radio" name="karyl-place" value=3.125>독기의 암룡</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type="radio" name="times" value="nomal">일반</label>
-                    <label><input type="radio" name="times" value="event2">데일리 쥬얼 팩</label>
+                    <label><input type="radio" name="karyl-times" value=1.0>일반</label>
+                    <label><input type="radio" name="karyl-times" value=2.0>데일리 쥬얼 팩</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type='number' name="karyl-days">일</label>
-                    <button class="calculate">계산</button>
+                    <label><input type='number' id="karyl-days">일</label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
-            </div>
-            <div id="rino_HD_checkbox" style="display: none;">
+            </form>
+            <!--리노 아레나 파밍-->
+            <form id="rino_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
-                    <label>시간 보상<input type="number" value="timecoin"></label>
-                    <label>일<input type='number' name="rino-days"></label>
+                    <label>시간 보상<input type="number" id="rino-timecoin"></label>
+                    <label>일<input type='number' id="rino-days"></label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
-            </div>
+            </form>
             <form id="rima_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
                     <label><input type="checkbox" name="rima-checkbox" value="HD 3-2">HD 3-1</label>
@@ -344,42 +349,47 @@
                 </fieldset>
                 <fieldset>
                     <label><input type='checkbox' name="rima-reset" value="reset">풀초기화</label>
-                    <label><input type='number' id="koko-days">일</label>
-                    <button class="calculate">계산</button>
+                    <label><input type='number' id="rima-days">일</label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
+            <!--이오 클랜전 파밍-->
             <div id="io_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
-                    <label><input type="radio" name="rank" value="5000">1위~50위</label>
-                    <label><input type="radio" name="rank" value="4500">51위~150위</label>
-                    <label><input type="radio" name="rank" value="4000">151위~300위</label>
-                    <label><input type="radio" name="rank" value="3500">301위~700위</label>
-                    <label><input type="radio" name="rank" value="3000">701위~1300위</label>
-                    <label><input type="radio" name="rank" value="2500">1301위~2500위</label>
-                    <label><input type="radio" name="rank" value="2000">2501위~4000위</label>
-                    <label><input type="radio" name="rank" value="1500">4001위~6000위</label>
-                    <label><input type="radio" name="rank" value="1000">6001위~10000위</label>
+                    <label><input type="radio" name="io-rank" value=5000>1위~50위</label>
+                    <label><input type="radio" name="io-rank" value=4000>151위~300위</label>
+                    <label><input type="radio" name="io-rank" value=4500>51위~150위</label>
+                    <label><input type="radio" name="io-rank" value=3500>301위~700위</label>
+                    <label><input type="radio" name="io-rank" value=3000>701위~1300위</label>
+                    <label><input type="radio" name="io-rank" value=2500>1301위~2500위</label>
+                    <label><input type="radio" name="io-rank" value=2000>2501위~4000위</label>
+                    <label><input type="radio" name="io-rank" value=1500>4001위~6000위</label>
+                    <label><input type="radio" name="io-rank" value=1000>6001위~10000위</label>
                 </fieldset>
                 <fieldset>
-                    <label>클랜전 참여 횟수(달)<input type='number' name="io-clearnum"></label>
+                    <label>클랜전 참여 횟수(달)<input type='number' id="io-clearnum"></label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
             </div>
+            <!--유카리 던전 파밍-->
             <div id="yukari_HD_checkbox" style="display: none;" onsubmit="return false;">
                 <fieldset>
-                    <label><input type="radio" name="place" value="300">운해의 산맥</label>
-                    <label><input type="radio" name="place" value="1000">밀림의 거목</label>
-                    <label><input type="radio" name="place" value="1500">절벽의 유적</label>
-                    <label><input type="radio" name="place" value="2000">창해의 고탑</label>
-                    <label><input type="radio" name="place" value="2500">독기의 암룡</label>
+                    <label><input type="radio" name="yukari-place" value=0.375>운해의 산맥</label>
+                    <label><input type="radio" name="yukari-place" value=1.25>밀림의 거목</label>
+                    <label><input type="radio" name="yukari-place" value=1.875>절벽의 유적</label>
+                    <label><input type="radio" name="yukari-place" value=2.5>창해의 고탑</label>
+                    <label><input type="radio" name="yukari-place" value=3.125>독기의 암룡</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type="radio" name="times" value="nomal">일반</label>
-                    <label><input type="radio" name="times" value="event2">데일리 쥬얼 팩</label>
+                    <label><input type="radio" name="yukari-times" value=1>일반</label>
+                    <label><input type="radio" name="yukari-times" value=2>데일리 쥬얼 팩</label>
                 </fieldset>
                 <fieldset>
-                    <label><input type='number' name="yukari-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece()">계산</button>
+                    <label><input type='number' id="yukari-days">일</label>
+                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <input type="reset">
                 </fieldset>
             </div>
             <div id="MP-calculate-result" style="display: none;">

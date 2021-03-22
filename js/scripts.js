@@ -152,17 +152,34 @@ function calculateHDpiece(){
         document.getElementById('MP-jewelnum').innerText = String(0);
         if($('input:checkbox[name="peko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
     }
-    if(stage=="VH18-2"){
-        var checked_num = $('input:checkbox[name="koko-checkbox"]:checked').length;
-        var times = $('input:radio[name="koko-times"]:checked').val();
-        var isfull = $('input:checkbox[name="koko-reset"]').is(':checked');
-        var full = 1; if(isfull) full = 2;
-        var days = document.getElementById('koko-days').value;
-
+    if(stage=="VH18-2"){ 
+        var checked_num = $('input:checkbox[name="koko-checkbox"]:checked').length; 
+        var times = $('input:radio[name="koko-times"]:checked').val(); 
+        var isfull = $('input:checkbox[name="koko-reset"]').is(':checked'); 
+        var full = 1; if(isfull) full = 2; 
+        var days = document.getElementById('koko-days').value; 
+ 
+        document.getElementById('MP-days').innerText = String(days); 
+        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2); 
+        document.getElementById('MP-jewelnum').innerText = String(0); 
+        if($('input:checkbox[name="koko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days); 
+    } 
+    if(stage=="VH18-3"){
+        var coin = $('input:radio[name="karyl-place"]:checked').val();
+        var times = $('input:radio[name="karyl-times"]:checked').val();
+        var days = document.getElementById('karyl-days').value;
+        var piecefive = parseInt(parseInt(coin * times * days * 5)/5);
         document.getElementById('MP-days').innerText = String(days);
-        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2);
+        document.getElementById('MP-num').innerText = String(piecefive*5);
         document.getElementById('MP-jewelnum').innerText = String(0);
-        if($('input:checkbox[name="koko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
+    }
+    if(stage=="VH19-1"){
+        var coin = document.getElementById("rino-timecoin").value;
+        var days = document.getElementById('rino-days').value;
+        var piece = parseInt(parseInt(coin * 24 * days)/800);
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(piece * 5);
+        document.getElementById('MP-jewelnum').innerText = String(0);
     }
     if(stage=="VH19-2"){
         var checked_num = $('input:checkbox[name="rima-checkbox"]:checked').length;
@@ -176,4 +193,22 @@ function calculateHDpiece(){
         document.getElementById('MP-jewelnum').innerText = String(0);
         if($('input:checkbox[name="rima-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
     }
+    if(stage=="VH19-3"){
+        var coin = $('input:radio[name="io-rank"]:checked').val();
+        var days = document.getElementById('io-clearnum').value;
+        var piece = parseInt(coin * days / 800);
+        document.getElementById('MP-days').innerText = String(days*30);
+        document.getElementById('MP-num').innerText = String(piece * 5);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+    }
+    if(stage=="VH20-1"){
+        var coin = $('input:radio[name="yukari-place"]:checked').val();
+        var times = $('input:radio[name="yukari-times"]:checked').val();
+        var days = document.getElementById('yukari-days').value;
+        var piecefive = parseInt(parseInt(coin * times * days * 5)/5);
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(piecefive*5);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+    }
+
 }
