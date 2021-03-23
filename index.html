@@ -250,7 +250,7 @@
          <section id="container-MP-calculator" style="display:none">
             <h1>6성 캐릭터 메모리 피스 계산기</h1>
             <div class="character-setting">
-                <select id="character-main-HD-list-select" onchange="getHDCharacterView();">
+                <select id="character-MemoryPeiece-list-select" onchange="getPieceCharacterView();">
                     <option value="default_character">[캐릭터...]</option>
                     <option value="VH18-1">페코린느</option>
                     <option value="VH18-2">콧코로</option>
@@ -281,7 +281,7 @@
                 <fieldset>
                     <label><input type='checkbox' name="peko-reset">풀초기화</label>
                     <label><input type='number' id="peko-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
@@ -302,7 +302,7 @@
                 <fieldset>
                     <label><input type='checkbox' name="koko-reset">풀초기화</label>
                     <label><input type='number' id="koko-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
@@ -321,7 +321,7 @@
                 </fieldset>
                 <fieldset>
                     <label><input type='number' id="karyl-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
@@ -330,7 +330,7 @@
                 <fieldset>
                     <label>시간 보상<input type="number" id="rino-timecoin"></label>
                     <label>일<input type='number' id="rino-days"></label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
@@ -349,7 +349,7 @@
                 <fieldset>
                     <label><input type='checkbox' name="rima-reset" value="reset">풀초기화</label>
                     <label><input type='number' id="rima-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </form>
@@ -368,7 +368,7 @@
                 </fieldset>
                 <fieldset>
                     <label>클랜전 참여 횟수(달)<input type='number' id="io-clearnum"></label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </div>
@@ -387,7 +387,7 @@
                 </fieldset>
                 <fieldset>
                     <label><input type='number' id="yukari-days">일</label>
-                    <button class="calculate" onclick="calculateHDpiece();">계산</button>
+                    <button class="calculate" onclick="calculatePiece();">계산</button>
                     <input type="reset">
                 </fieldset>
             </div>
@@ -412,7 +412,7 @@
         <section id="container-pure-MP-calculator" style="display:none">
             <h1>6성 캐릭터 퓨어 메모리 피스 계산기</h1>
             <div class="character-setting">
-                <select id="character-list-select" onchange="getCharacterView();">
+                <select id="character-PureMemoryPeiece-list-select" onchange="getPurePieceCharacterView();">
                     <option value="default_character">[캐릭터...]</option>
                     <option value="VH18-1">페코린느</option>
                     <option value="VH18-2">콧코로</option>
@@ -427,9 +427,35 @@
                     <label id="preset-pure-HD-character-name-label"></label>
                 </div>
             </div>
-            <input type='number' id="">ㄱ</input>
-            <input type='number' id="">ㄴ</input>
-            <input type='number' id="">ㄷ</input>
+            <form id="pure-character-box" onsubmit="return false;">
+                <fieldset>
+                    <label><input type="radio" name="pure-character-times" value=1>일반</label>
+                    <label><input type="radio" name="pure-character-times" value=2>2배 이벤트</label>
+                    <label><input type="radio" name="pure-character-times" value=3>3배 이벤트</label>
+                </fieldset>
+                <fieldset>
+                    <label><input type='checkbox' name="pure-character-reset">풀초기화</label>
+                    <label><input type='number' id="pure-character-days">일</label>
+                    <button class="calculate" onclick="calculatePurePiece();">계산</button>
+                    <input type="reset">
+                </fieldset>
+            </form>
+            <div id="PMP-calculate-result" style="display: none;">
+                <table>
+                    <tr>
+                        <th>일</th>
+                        <td id="PMP-days"></td>
+                    </tr>
+                    <tr>
+                        <th>피스량</th>
+                        <td id="PMP-num"></td>
+                    </tr>
+                    <tr>
+                        <th>소비 쥬얼량</th>
+                        <td id="PMP-jewelnum"></td>
+                    </tr>
+                </table>
+            </div>
         </section>
         <!-- Script -->
         <script src="js/scripts.js" type="text/javascript"></script>
