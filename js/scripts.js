@@ -36,6 +36,59 @@ function pure_MP_calculator_hide() {
     }
 }
 
+// 베리하드 케릭터 사진
+function getVHCharacterView(picture_src) {
+    var getID = document.getElementById("character-main-VH-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="default_character"){
+        document.getElementById("preset-character-image").src=picture_src+"/Placeholder.webp" 
+        document.getElementById("preset-character-name-label").innerText="";
+    }
+    if(stage=="VH18-1"){
+        document.getElementById("preset-character-image").src=picture_src+"/페코린느3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="페코린느";
+
+    }
+    if(stage=="VH18-2"){
+        document.getElementById("preset-character-image").src=picture_src+"/콧코로3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="콧코로";
+    }
+    if(stage=="VH18-3"){
+        document.getElementById("preset-character-image").src=picture_src+"/캬루3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="캬루";
+    }
+    if(stage=="VH19-1"){
+        document.getElementById("preset-character-image").src=picture_src+"/리노3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="리노";
+    }
+    if(stage=="VH19-2"){
+        document.getElementById("preset-character-image").src=picture_src+"/리마3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="리마";
+    }
+    if(stage=="VH19-3"){
+        document.getElementById("preset-character-image").src=picture_src+"/이오3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="이오";
+    }
+    if(stage=="VH20-1"){
+        document.getElementById("preset-character-image").src=picture_src+"/유카리3성.webp" 
+        document.getElementById("preset-character-name-label").innerText="유카리";
+    }
+}
+// 베리하드 공략글 이동
+function moveVHpage(folder_src){
+    var getID = document.getElementById("character-main-VH-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="VH18-1")location.href=folder_src+"/18-1.html";
+    if(stage=="VH18-2")location.href=folder_src+"/18-2.html";
+    if(stage=="VH18-3")location.href=folder_src+"/18-3.html";
+    if(stage=="VH19-1")location.href=folder_src+"/19-1.html";
+    if(stage=="VH19-2")location.href=folder_src+"/19-2.html";
+    if(stage=="VH19-3")location.href=folder_src+"/19-3.html";
+    if(stage=="VH20-1")location.href=folder_src+"/20-1.html";
+}
+
 //하드 피스 케릭터 사진 + 계산기 표시
 function getPieceCharacterView(){
     var getID = document.getElementById("character-MemoryPeiece-list-select");
@@ -91,7 +144,6 @@ function getPieceCharacterView(){
 
     location.href="#container-MP-calculator";
 }
-
 //베리 하드 피스 케릭터 사진 + 계산기 표시
 function getPurePieceCharacterView(){
     var getID = document.getElementById("character-PureMemoryPeiece-list-select");
@@ -132,63 +184,6 @@ function getPurePieceCharacterView(){
 
     location.href="#container-pure-MP-calculator";
 }
-
-// 베리하드 케릭터 사진 + 공략글
-function getVHCharacterView() {
-    var getID = document.getElementById("character-main-VH-list-select");
-    var stage = getID.options[getID.selectedIndex].value;
-
-    // 이전 캐릭터 창 닫기
-    document.getElementById("main-VH-info-18-1").style.display="none";
-    document.getElementById("main-VH-info-18-2").style.display="none";
-    document.getElementById("main-VH-info-18-3").style.display="none";
-    document.getElementById("main-VH-info-19-1").style.display="none";
-    document.getElementById("main-VH-info-19-2").style.display="none";
-    document.getElementById("main-VH-info-19-3").style.display="none";
-    document.getElementById("main-VH-info-20-1").style.display="none";
-
-    if(stage=="default_character"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/Placeholder.webp" 
-        document.getElementById("preset-character-name-label").innerText="";
-    }
-    if(stage=="VH18-1"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/페코린느3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="페코린느";
-        document.getElementById("main-VH-info-18-1").style.display="block";
-    }
-    if(stage=="VH18-2"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/콧코로3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="콧코로";
-        document.getElementById("main-VH-info-18-2").style.display="block";
-    }
-    if(stage=="VH18-3"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/캬루3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="캬루";
-        document.getElementById("main-VH-info-18-3").style.display="block";
-    }
-    if(stage=="VH19-1"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/리노3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="리노";
-        document.getElementById("main-VH-info-19-1").style.display="block";
-    }
-    if(stage=="VH19-2"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/리마3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="리마";
-        document.getElementById("main-VH-info-19-2").style.display="block";
-    }
-    if(stage=="VH19-3"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/이오3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="이오";
-        document.getElementById("main-VH-info-19-3").style.display="block";
-    }
-    if(stage=="VH20-1"){
-        document.getElementById("preset-character-image").src="priconne-images/unit-icon/유카리3성.webp" 
-        document.getElementById("preset-character-name-label").innerText="유카리";
-        document.getElementById("main-VH-info-20-1").style.display="block";
-    }
-    location.href="#main-VH-tittle";
-}
-
 // 하드 피스 계산기 버튼
 function calculatePiece(){
     document.getElementById("MP-calculate-result").style.display="block";
@@ -268,7 +263,6 @@ function calculatePiece(){
         document.getElementById('MP-jewelnum').innerText = String(0);
     }
 }
-
 // 퓨어피스 계산
 function calculatePurePiece(){
     document.getElementById("PMP-calculate-result").style.display="block";
