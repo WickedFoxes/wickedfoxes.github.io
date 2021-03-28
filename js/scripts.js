@@ -3,7 +3,17 @@ function main_VH_hide() {
     document.getElementById("container-total-list").style.display="none";
     document.getElementById("container-MP-calculator").style.display="none";
     document.getElementById("container-pure-MP-calculator").style.display="none";
+    document.getElementById("container-six-quest").style.display="none";
     var con = document.getElementById("container-main-VH");
+    if(con.style.display=="none") con.style.display="block";
+    else con.style.display="none";
+}
+function six_quest_hide() {
+    document.getElementById("container-total-list").style.display="none";
+    document.getElementById("container-MP-calculator").style.display="none";
+    document.getElementById("container-pure-MP-calculator").style.display="none";
+    document.getElementById("container-main-VH").style.display="none";
+    var con = document.getElementById("container-six-quest");
     if(con.style.display=="none") con.style.display="block";
     else con.style.display="none";
 }
@@ -75,9 +85,48 @@ function getVHCharacterView(picture_src) {
         document.getElementById("preset-character-name-label").innerText="유카리";
     }
 }
+// 6성 개화 케릭터 사진
+function getSixCharacterView(picture_src) {
+    var getID = document.getElementById("character-six-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="default_character"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/Placeholder.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="";
+    }
+    if(stage=="VH18-1"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/페코린느6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="페코린느";
+
+    }
+    if(stage=="VH18-2"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/콧코로6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="콧코로";
+    }
+    if(stage=="VH18-3"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/캬루6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="캬루";
+    }
+    if(stage=="VH19-1"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/리노6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="리노";
+    }
+    if(stage=="VH19-2"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/리마6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="리마";
+    }
+    if(stage=="VH19-3"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/이오6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="이오";
+    }
+    if(stage=="VH20-1"){
+        document.getElementById("preset-six-character-image").src=picture_src+"/유카리6성.webp" 
+        document.getElementById("preset-six-character-name-label").innerText="유카리";
+    }
+}
 // 베리하드 공략글 이동
-function moveVHpage(folder_src){
-    var getID = document.getElementById("character-main-VH-list-select");
+function moveVHpage(selectid,folder_src){
+    var getID = document.getElementById(selectid);
     var stage = getID.options[getID.selectedIndex].value;
 
     if(stage=="VH18-1")location.href=folder_src+"/18-1.html";

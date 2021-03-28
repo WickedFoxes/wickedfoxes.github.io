@@ -29,8 +29,8 @@
                 <!--tittle-->
                 <hl>메인 베리하드 퀘스트</hl>
                 <!--select-->
-                <div class="character-setting" onchange="getVHCharacterView('../priconne-images/unit-icon');">
-                    <select id="character-main-VH-list-select">
+                <div class="character-setting">
+                    <select id="character-main-VH-list-select" onchange="getVHCharacterView('../priconne-images/unit-icon');">
                         <option value="default_character">[캐릭터...]</option>
                         <option value="VH18-1">VH 18-1 | 페코린느</option>
                         <option value="VH18-2">VH 18-2 | 콧코로</option>
@@ -40,7 +40,7 @@
                         <option value="VH19-3">VH 19-3 | 이오</option>
                         <option value="VH20-1">VH 20-1 | 유카리</option>
                     </select>
-                    <button onclick="moveVHpage('.');">검색</button>
+                    <button onclick="moveVHpage('character-main-VH-list-select','.');">검색</button>
                     <div id="characer-view">
                         <img id="preset-character-image" src="../priconne-images/unit-icon/유카리3성.webp">
                         <label id="preset-character-name-label">유카리</label>

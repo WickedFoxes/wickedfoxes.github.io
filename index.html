@@ -19,7 +19,7 @@
                 <button id="navigation-MP-calculator" type="button" onclick="MP_calculator_hide(); location.href='#container-MP-calculator';" >메모리 피스 계산기</button>
                 <button id="navigation-pure-MP-calculator" type="button" onclick="pure_MP_calculator_hide(); location.href='#container-pure-MP-calculator';">퓨어 메모리 피스 계산기</button>
                 <button id="navigation-main-VH" type="button" onclick="main_VH_hide(); location.href='#container-main-VH';"><a>메인 베리하드 퀘스트 공략</a></button>
-                <button id="navigation-six-star" type="button">6성해방퀘스트</button>
+                <button id="navigation-six-star" type="button" onclick="six_quest_hide(); location.href='#container-six-quest';">6성해방퀘스트</button>
             </div>
         </header>
          <!-- main-VH -->
@@ -40,13 +40,39 @@
                         <option value="VH19-3">VH 19-3 | 이오</option>
                         <option value="VH20-1">VH 20-1 | 유카리</option>
                     </select>
-                    <button onclick="moveVHpage('VH');">검색</button>
+                    <button onclick="moveVHpage('character-main-VH-list-select','VH');">검색</button>
                     <div id="characer-view">
                         <img id="preset-character-image" src="priconne-images/unit-icon/Placeholder.webp">
                         <label id="preset-character-name-label"></label>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- six-quest -->
+        <section id="container-six-quest" style="display:none">
+            <!--Main-VH-Select-Tittle-->
+            <div id="six-quest-tittle">
+                <!--tittle-->
+                <hl>6성 개화 퀘스트</hl>
+                <!--select-->
+                <div class="character-setting" onchange="getSixCharacterView('priconne-images/unit-icon');">
+                    <select id="character-six-list-select">
+                         <option value="default_character">[캐릭터...]</option>
+                          <option value="VH18-1">페코린느</option>
+                          <option value="VH18-2">콧코로</option>
+                          <option value="VH18-3">캬루</option>
+                          <option value="VH19-1">리노</option>
+                          <option value="VH19-2">리마</option>
+                          <option value="VH19-3">이오</option>
+                          <option value="VH20-1">유카리</option>
+                     </select>
+                     <button onclick="moveVHpage('character-six-list-select','sixstar');">검색</button>
+                      <div id="characer-view">
+                           <img id="preset-six-character-image" src="priconne-images/unit-icon/Placeholder.webp">
+                           <label id="preset-six-character-name-label"></label>
+                     </div>
+                 </div>
+             </div>
         </section>
          <!-- memory-piece-calculator -->
          <section id="container-MP-calculator" style="display:none">
