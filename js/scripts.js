@@ -1,5 +1,6 @@
 // 화면 숨기는 함수
 function main_VH_hide() {
+    document.getElementById("container-total-list").style.display="none";
     document.getElementById("container-MP-calculator").style.display="none";
     document.getElementById("container-pure-MP-calculator").style.display="none";
     var con = document.getElementById("container-main-VH");
@@ -10,15 +11,29 @@ function MP_calculator_hide() {
     document.getElementById("container-main-VH").style.display="none";
     document.getElementById("container-pure-MP-calculator").style.display="none";
     var con = document.getElementById("container-MP-calculator");
-    if(con.style.display=="none") con.style.display="block";
-    else con.style.display="none";
+    var box = document.getElementById("container-total-list");
+    if(con.style.display=="none") {
+        con.style.display="block";
+        box.style.display="block";
+    }
+    else {
+        con.style.display="none";
+        box.style.display="none";
+    }
 }
 function pure_MP_calculator_hide() {
     document.getElementById("container-main-VH").style.display="none";
     document.getElementById("container-MP-calculator").style.display="none";
     var con = document.getElementById("container-pure-MP-calculator");
-    if(con.style.display=="none") con.style.display="block";
-    else con.style.display="none";
+    var box = document.getElementById("container-total-list");
+    if(con.style.display=="none") {
+        con.style.display="block";
+        box.style.display="block";
+    }
+    else {
+        con.style.display="none";
+        box.style.display="none";
+    }
 }
 
 //하드 피스 케릭터 사진 + 계산기 표시
@@ -194,16 +209,16 @@ function calculatePiece(){
         if($('input:checkbox[name="peko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
     }
     if(stage=="VH18-2"){ 
-        var checked_num = $('input:checkbox[name="koko-checkbox"]:checked').length; 
-        var times = $('input:radio[name="koko-times"]:checked').val(); 
-        var isfull = $('input:checkbox[name="koko-reset"]').is(':checked'); 
-        var full = 1; if(isfull) full = 2; 
-        var days = document.getElementById('koko-days').value; 
- 
-        document.getElementById('MP-days').innerText = String(days); 
-        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2); 
-        document.getElementById('MP-jewelnum').innerText = String(0); 
-        if($('input:checkbox[name="koko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days); 
+        var checked_num = $('input:checkbox[name="koko-checkbox"]:checked').length;
+        var times = $('input:radio[name="koko-times"]:checked').val();
+        var isfull = $('input:checkbox[name="koko-reset"]').is(':checked');
+        var full = 1; if(isfull) full = 2;
+        var days = document.getElementById('koko-days').value;
+
+        document.getElementById('MP-days').innerText = String(days);
+        document.getElementById('MP-num').innerText = String(3*days*full*checked_num*times/2);
+        document.getElementById('MP-jewelnum').innerText = String(0);
+        if($('input:checkbox[name="koko-reset"]').is(':checked')) document.getElementById('MP-jewelnum').innerText = String(checked_num * 50 * days);
     } 
     if(stage=="VH18-3"){
         var coin = $('input:radio[name="karyl-place"]:checked').val();
@@ -237,7 +252,8 @@ function calculatePiece(){
     if(stage=="VH19-3"){
         var coin = $('input:radio[name="io-rank"]:checked').val();
         var days = document.getElementById('io-clearnum').value;
-        var piece = parseInt(coin * days / 800);
+        var stage = document.getElementById('io-stage').value;
+        var piece = parseInt((30 * stage + coin * days) / 800);
         document.getElementById('MP-days').innerText = String(days*30);
         document.getElementById('MP-num').innerText = String(piece * 5);
         document.getElementById('MP-jewelnum').innerText = String(0);
@@ -253,6 +269,7 @@ function calculatePiece(){
     }
 }
 
+// 퓨어피스 계산
 function calculatePurePiece(){
     document.getElementById("PMP-calculate-result").style.display="block";
 
@@ -261,7 +278,103 @@ function calculatePurePiece(){
     var full = 1; if(isfull) full = 2;
     var days = document.getElementById('pure-character-days').value;
     document.getElementById('PMP-days').innerText = String(days);
-    document.getElementById('PMP-num').innerText = String(3*times*days/2);
+    document.getElementById('PMP-num').innerText = String(parseInt(3*times*full*days/2));
     document.getElementById('PMP-jewelnum').innerText = String(0);
     if($('input:checkbox[name="pure-character-reset"]').is(':checked')) document.getElementById('PMP-jewelnum').innerText = String(50 * days);
+}
+
+// total 추가 버튼
+function addTotalDays_piece(){
+    var days = document.getElementById("MP-days").innerText;
+    var total = document.getElementById("total-days");
+    document.getElementById("total-days").value = parseInt(total.value) + parseInt(days);
+}
+function addTotalDays_pure(){
+    var days = document.getElementById("PMP-days").innerText;
+    var total = document.getElementById("total-days");
+    document.getElementById("total-days").value = parseInt(total.value) + parseInt(days);
+}
+function addTotalNum_piece(){
+    var num = document.getElementById("MP-num").innerText;
+    var total = document.getElementById("piece-total-num");
+
+    var getID = document.getElementById("character-MemoryPeiece-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="VH18-1"){
+        var charact = document.getElementById("piece-peko-total-num");
+        document.getElementById("piece-peko-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH18-2"){
+        var charact = document.getElementById("piece-koko-total-num");
+        document.getElementById("piece-koko-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH18-3"){
+        var charact = document.getElementById("piece-karyl-total-num");
+        document.getElementById("piece-karyl-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-1"){
+        var charact = document.getElementById("piece-rino-total-num");
+        document.getElementById("piece-rino-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-2"){
+        var charact = document.getElementById("piece-rima-total-num");
+        document.getElementById("piece-rima-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-3"){
+        var charact = document.getElementById("piece-io-total-num");
+        document.getElementById("piece-io-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH20-1"){
+        var charact = document.getElementById("piece-yukari-total-num");
+        document.getElementById("piece-yukari-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    document.getElementById("piece-total-num").value = parseInt(total.value) + parseInt(num);
+}
+function addTotalNum_pure(){
+    var num = document.getElementById("PMP-num").innerText;
+    var total = document.getElementById("pure-total-num");
+
+    var getID = document.getElementById("character-PureMemoryPeiece-list-select");
+    var stage = getID.options[getID.selectedIndex].value;
+
+    if(stage=="VH18-1"){
+        var charact = document.getElementById("pure-peko-total-num");
+        document.getElementById("pure-peko-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH18-2"){
+        var charact = document.getElementById("pure-koko-total-num");
+        document.getElementById("pure-koko-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH18-3"){
+        var charact = document.getElementById("pure-karyl-total-num");
+        document.getElementById("pure-karyl-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-1"){
+        var charact = document.getElementById("pure-rino-total-num");
+        document.getElementById("pure-rino-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-2"){
+        var charact = document.getElementById("pure-rima-total-num");
+        document.getElementById("pure-rima-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH19-3"){
+        var charact = document.getElementById("pure-io-total-num");
+        document.getElementById("pure-io-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    if(stage=="VH20-1"){
+        var charact = document.getElementById("pure-yukari-total-num");
+        document.getElementById("pure-yukari-total-num").value = parseInt(num) + parseInt(charact.value);
+    }
+    document.getElementById("pure-total-num").value = parseInt(total.value) + parseInt(num);
+}
+function addTotaljewel_piece(){
+    var days = document.getElementById("MP-jewelnum").innerText;
+    var total = document.getElementById("total-jewelnum");
+    document.getElementById("total-jewelnum").value = parseInt(total.value) + parseInt(days);
+}
+function addTotaljewel_pure(){
+    var days = document.getElementById("PMP-jewelnum").innerText;
+    var total = document.getElementById("total-jewelnum");
+    document.getElementById("total-jewelnum").value = parseInt(total.value) + parseInt(days);
 }
